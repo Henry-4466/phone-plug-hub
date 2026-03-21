@@ -1013,23 +1013,83 @@ let products = [];
 let cart = [];
 let currentOrder = null;
 
-// Load products from JSON
-fetch('products.json')
-    .then(response => response.json())
-    .then(data => {
-        products = data;
-        renderCategories();
-        renderProducts(products);
-    })
-    .catch(error => {
-        console.error('Error loading products:', error);
-        document.getElementById('products').innerHTML = `
-            <div class="no-results">
-                <h3>⚠️ Failed to load products</h3>
-                <p>Please check your internet connection and refresh the page</p>
-            </div>
-        `;
-    });
+// Debug display function
+function showDebug(message, isError = false) {
+    const container = document.getElementById('products');
+    container.innerHTML = `
+        <div class="no-results" style="border: 2px solid ${isError ? '#e53e3e' : '#ff6b00'}; padding: 30px; border-radius: 15px;">
+            <h3>${isError ? '❌ Error' : 'ℹ️ Info'}</h3>
+            <p style="font-family: monospace; font-size: 14px; margin-top: 15px; word-break: break-all;">${message}</p>
+            ${isError ? '<p style="margin-top: 20px; color: #888;">Check that products.json is in the same folder as index.html and committed to GitHub</p>' : ''}
+        </div>
+    `;
+}
+
+// Load products from JSON with GitHub Pages compatibility
+function loadProducts() {
+    showDebug('Loading products...');
+    
+    // Try multiple paths for GitHub Pages compatibility
+    const possiblePaths = [
+        './products.json',           // Same folder
+        'products.json',             // Root relative
+        window.location.pathname.replace(/\/[^\/]*$/, '') + '/products.json' // Current directory
+    ];
+    
+    let pathIndex = 0;
+    
+    function tryNextPath() {
+        if (pathIndex >= possiblePaths.length) {
+            showDebug('Failed to load from all paths:<br>' + possiblePaths.join('<br>'), true);
+            return;
+        }
+        
+        const path = possiblePaths[pathIndex++];
+        showDebug(`Trying: ${path}`);
+        
+        fetch(path, { cache: 'no-cache' })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                return response.text();
+            })
+            .then(text => {
+                // Check if we got HTML instead of JSON
+                if (text.trim().startsWith('<')) {
+                    throw new Error('Received HTML instead of JSON (404 page?)');
+                }
+                
+                try {
+                    products = JSON.parse(text);
+                    if (!Array.isArray(products)) {
+                        throw new Error('JSON is not an array');
+                    }
+                    if (products.length === 0) {
+                        throw new Error('JSON array is empty');
+                    }
+                    // Success! Render the products
+                    renderCategories();
+                    renderProducts(products);
+                } catch (e) {
+                    throw new Error(`JSON parse error: ${e.message}`);
+                }
+            })
+            .catch(error => {
+                console.error(`Failed to load from ${path}:`, error);
+                if (pathIndex < possiblePaths.length) {
+                    tryNextPath(); // Try next path
+                } else {
+                    showDebug(`All paths failed. Last error: ${error.message}<br><br>Paths tried:<br>${possiblePaths.join('<br>')}`, true);
+                }
+            });
+    }
+    
+    tryNextPath();
+}
+
+// Call load on startup
+loadProducts();
 
 // Render Categories
 function renderCategories() {
@@ -1064,7 +1124,7 @@ function renderProducts(productsToRender) {
     
     container.innerHTML = productsToRender.map(product => `
         <div class="product-card ${product.popular ? 'popular' : ''} ${!product.inStock ? 'out-of-stock' : ''}" 
-             onclick="${product.inStock ? `openProductModal('${product.name}')` : ''}">
+             onclick="${product.inStock ? `openProductModal('${product.name.replace(/'/g, "\\'")}')` : ''}">
             
             ${product.popular ? '<span class="badge popular-badge">🔥 Popular</span>' : ''}
             ${!product.inStock ? '<span class="badge stock-badge">Out of Stock</span>' : ''}
@@ -1085,12 +1145,12 @@ function renderProducts(productsToRender) {
                 <div class="product-footer">
                     <span class="product-category">${product.category}</span>
                     ${product.inStock ? `
-                    <button class="add-to-cart" onclick="event.stopPropagation(); addToCart('${product.name}')" title="Add to Cart">
+                    <button class="add-to-cart" onclick="event.stopPropagation(); addToCart('${product.name.replace(/'/g, "\\'")}')" title="Add to Cart">
                         🛒
                     </button>` : ''}
                 </div>
                 ${product.inStock ? `
-                <button onclick="event.stopPropagation(); quickOrder('${product.name}', '${product.price}')" style="margin-top: 10px;">
+                <button onclick="event.stopPropagation(); quickOrder('${product.name.replace(/'/g, "\\'")}', '${product.price}')" style="margin-top: 10px;">
                     Order Now
                 </button>` : '<button class="order-btn-small disabled" disabled>Out of Stock</button>'}
             </div>
@@ -1520,11 +1580,11 @@ function openProductModal(productName) {
         <p class="price" style="font-size: 32px; margin-bottom: 20px;">${product.price}</p>
         <p style="color: #aaa; line-height: 1.6; margin-bottom: 25px;">${product.description || ''}</p>
         <div style="display: flex; gap: 15px;">
-            <button onclick="addToCart('${product.name}'); closeModal('productModal');" 
+            <button onclick="addToCart('${product.name.replace(/'/g, "\\'")}'); closeModal('productModal');" 
                     style="flex: 1; padding: 16px; background: linear-gradient(135deg, #ff6b00 0%, #ff8533 100%); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer;">
                 🛒 Add to Cart
             </button>
-            <button onclick="quickOrder('${product.name}', '${product.price}')" 
+            <button onclick="quickOrder('${product.name.replace(/'/g, "\\'")}', '${product.price}')" 
                     style="flex: 1; padding: 16px; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer;">
                 📱 Quick Order
             </button>
