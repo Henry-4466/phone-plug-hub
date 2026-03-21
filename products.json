@@ -115,5 +115,14 @@
     "description": "Blutooth wireless connectivity with a verity of colors",
     "inStock": true,
     "popular": true
-  } 
+  },
+  {
+      "name": "SOUNDCORE R5OI",
+    "price": "KSh 2900",
+    "category": "Audio",
+    "image": "images/.jpg",
+    "description": "Offers up to 10 hours of playtime on a single charge utilizes Bluetooth 5.3 technology water resistance IPX5",
+    "inStock": true,
+    "popular": true
+  }
 ]
