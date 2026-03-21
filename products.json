@@ -29,7 +29,7 @@
   {
     "name": "Power Bank",
     "price": "KSh 1200",
-    "category": "Power",
+    "category": "POWER BANK",
     "image": "images/powerbank.jpg",
     "description": "10000mAh high-capacity power bank with dual USB output and fast charging support.",
     "inStock": true,
@@ -65,7 +65,7 @@
   {
     "name": "AMAYA POWER BANK",
     "price": "kSH 1200",
-    "category": "Power",
+    "category": "POWER BANK",
     "image": "images/.jpg",
     "description": "AMAYA APB-F1229 10,000mAh 22.5W power bank with 4 built in cables",
     "inStock": true,
