@@ -70,5 +70,14 @@
     "description": "AMAYA APB-F1229 10,000mAh 22.5W power bank with 4 built in cables",
     "inStock": true,
     "popular": true
+  },
+  {
+    "name": "AMAYA WATCH LITE",
+    "price": "KSh 2500",
+    "category": "Wearables",
+    "image": "images/.jpg",
+    "description": "AMAYA watch Lite waterproof ip67 power lasts up to 14 days",
+    "inStock": true,
+    "popular": true
   }
 ]
