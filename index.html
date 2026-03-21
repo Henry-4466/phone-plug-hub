@@ -1009,6 +1009,15 @@
     </svg>
 </a>
 <script>
+    let products = [];
+
+fetch('products.json')
+  .then(response => response.json())
+  .then(data => {
+    products = data;
+    renderCategories();
+    renderProducts(products);
+  });
 let cart = [];
 let currentOrder = null;
 
