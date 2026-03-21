@@ -34,6 +34,13 @@
     "description": "10000mAh high-capacity power bank with dual USB output and fast charging support.",
     "inStock": true,
     "popular": true
+    "name": "Amaya Power Bank",
+    "price": "KSH 1200",
+    "category": "POWER BANK",
+    "image": "image/Power Bank.jpg",
+    "description": "AMAYA APB-F129 10,000mAh 22.5W Power bank with 4 built in cables",
+    "instock": true,
+    "popular": true
   },
   {
     "name": "Wireless Earbuds",
@@ -60,15 +67,6 @@
     "image": "images/Head phones.jpg",
     "description": "wireless blutooth 5.3 battery life 3-5 hours charger type C HI-FI quality sound",
     "inStock": true,
-    "popular": true
-  },
-  {
-    "name": "Amaya Power Bank",
-    "price": "KSH 1200",
-    "category": "POWER BANK",
-    "image": "image/Power Bank.jpg",
-    "description": "AMAYA APB-F129 10,000mAh 22.5W Power bank with 4 built in cables",
-    "instock": true,
     "popular": true
   },
 ]
