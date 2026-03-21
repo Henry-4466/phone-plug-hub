@@ -3,7 +3,7 @@
     "name": "Fast Charger",
     "price": "KSh 800",
     "category": "Chargers",
-    "image": "images/fast-charger.jpg",
+    "image": "images/fast charger.jpg",
     "description": "Original fast charger with intelligent IC protection for safe and efficient charging.",
     "inStock": true,
     "popular": true
@@ -12,7 +12,7 @@
     "name": "Type-C Cable",
     "price": "KSh 300",
     "category": "Cables",
-    "image": "images/cable.jpg",
+    "image": "images/Type C cable.jpg",
     "description": "Durable Type-C cable supporting fast charging and high-speed data transfer.",
     "inStock": true,
     "popular": true
@@ -21,7 +21,7 @@
     "name": "Smart Watch",
     "price": "KSh 4300",
     "category": "Wearables",
-    "image": "images/smart-watch.jpg",
+    "image": "images/smartwatch.jpg",
     "description": "HAVIT M9068 Amoled wireless call smart watch with Extra watch straps.",
     "inStock": true,
     "popular": true
@@ -30,7 +30,7 @@
     "name": "Power Bank",
     "price": "KSh 1200",
     "category": "POWER BANK",
-    "image": "images/powerbank.jpg",
+    "image": "images/Power Bank.jpg",
     "description": "10000mAh high-capacity power bank with dual USB output and fast charging support.",
     "inStock": true,
     "popular": true
@@ -39,7 +39,7 @@
     "name": "Wireless Earbuds",
     "price": "KSh 1100",
     "category": "Audio",
-    "image": "images/wireless-earbuds.jpg",
+    "image": "images/wireless earbuds.jpg",
     "description": "JBL earpods Zero 5 hours play time with pure base.",
     "inStock": true,
     "popular": true
@@ -48,7 +48,7 @@
     "name": "Electric Kettle",
     "price": "KSh 1300",
     "category": "House Hold Appliances",
-    "image": "images/electric-kettle.jpg",
+    "image": "images/Electric Kettle.jpg",
     "description": "1.8L clear glass display electric kettle with auto-shutoff and boil-dry protection.",
     "inStock": true,
     "popular": true
@@ -57,7 +57,7 @@
     "name": "Dolly Head phones",
     "price": "KSh 1500",
     "category": "Head phones",
-    "image": "images/head-phones.jpg",
+    "image": "images/Head phones.jpg",
     "description": "wireless blutooth 5.3 battery life 3-5 hours charger type C HI-FI quality sound",
     "inStock": true,
     "popular": true
