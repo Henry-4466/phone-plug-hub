@@ -6,8 +6,8 @@ fetch("products.json")
     .then(response => response.json())
     .then(data => {
         products = data;
-        displayProducts();
-        displayCategories();
+        displayProducts → renderProducts
+        displayCategories → renderCategories
     })
     .catch(err => console.error("Failed to load products:", err));
 
