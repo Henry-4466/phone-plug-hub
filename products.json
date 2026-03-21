@@ -106,5 +106,14 @@
     "description": "Smart blender with glass 1.5L glass 2-speed settings and a pulse function for versatile blending contral",
     "inStock": true,
     "popular": true
-  }
+  },
+  {
+       "name": "CAMEIDO CT04 Headphones",
+    "price": "KSh 1500",
+    "category": "Head phones",
+    "image": "images/.jpg",
+    "description": "Blutooth wireless connectivity with a verity of colors",
+    "inStock": true,
+    "popular": true
+  } 
 ]
