@@ -1009,25 +1009,8 @@
     </svg>
 </a>
 <script>
-    let products = [];
-
-fetch('products.json')
-  .then(response => response.json())
-  .then(data => {
-    products = data;
-    renderCategories();
-    renderProducts(products);
-  });
 let cart = [];
 let currentOrder = null;
-
-// Initialize
-document.addEventListener('DOMContentLoaded', () => {
-    renderCategories();
-    renderProducts(products);
-    updateCartCount();
-});
-
 // Render Categories
 function renderCategories() {
     const categories = ['All', ...new Set(products.map(p => p.category))];
