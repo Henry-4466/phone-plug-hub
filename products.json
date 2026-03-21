@@ -124,5 +124,14 @@
     "description": "Offers up to 10 hours of playtime on a single charge utilizes Bluetooth 5.3 technology water resistance IPX5",
     "inStock": true,
     "popular": true
+  },
+  {
+      "name": "ORAIMO WATCH 5 LITE",
+    "price": "KSh 1900",
+    "category": "Wearables",
+    "image": "images/.jpg",
+    "description": "Display 2.01 HD screen, supports blutooth wireless calling, includes heart rate and blood oxygen monitoring battery life up to 7 days waterproof IP68",
+    "inStock": true,
+    "popular": true
   }
 ]
