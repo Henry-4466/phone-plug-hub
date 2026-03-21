@@ -1,19 +1,43 @@
 let products = [];
 let cart = [];
 
-// Fetch products from JSON
-fetch("products.json")
-    .then(response => response.json())
-    .then(data => {
-        products = data;
-        displayProducts → renderProducts
-        displayCategories → renderCategories
-    })
-    .catch(err => console.error("Failed to load products:", err));
+document.addEventListener('DOMContentLoaded', () => {
+    // Fetch products from JSON
+    fetch("products.json")
+        .then(response => response.json())
+        .then(data => {
+            products = data;
+            displayProducts();      // ← Fixed: was displayProducts → renderProducts
+            displayCategories();    // ← Fixed: was displayCategories → renderCategories
+        })
+        .catch(err => console.error("Failed to load products:", err));
+
+    // Search event listener
+    const searchInput = document.getElementById("searchInput");
+    if (searchInput) {
+        searchInput.addEventListener("input", handleSearch);
+    }
+
+    // Modal close functionality (moved inside DOMContentLoaded)
+    const modal = document.getElementById("productModal");
+    const closeBtn = document.querySelector(".close");
+    
+    if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+    }
+    
+    window.addEventListener("click", (e) => {
+        if (e.target === modal) modal.style.display = "none";
+    });
+});
 
 // Display products
 function displayProducts(filteredProducts = products) {
     const container = document.getElementById("products");
+    if (!container) return; // Safety check
+    
     container.innerHTML = "";
 
     filteredProducts.forEach((product, index) => {
@@ -41,9 +65,23 @@ function displayProducts(filteredProducts = products) {
 // Display categories
 function displayCategories() {
     const categoriesContainer = document.getElementById("categories");
+    if (!categoriesContainer || products.length === 0) return;
+    
     const categories = [...new Set(products.map(p => p.category))];
 
     categoriesContainer.innerHTML = "";
+    
+    // Add "All" button
+    const allBtn = document.createElement("button");
+    allBtn.className = "category-btn active";
+    allBtn.innerText = "All";
+    allBtn.addEventListener("click", () => {
+        document.querySelectorAll(".category-btn").forEach(b => b.classList.remove("active"));
+        allBtn.classList.add("active");
+        displayProducts(products);
+    });
+    categoriesContainer.appendChild(allBtn);
+
     categories.forEach(category => {
         const btn = document.createElement("button");
         btn.className = "category-btn";
@@ -66,11 +104,12 @@ function handleSearch() {
 }
 
 // Modal functionality
-const modal = document.getElementById("productModal");
-const modalBody = document.getElementById("modalBody");
-const closeBtn = document.querySelector(".close");
-
 function openModal(product) {
+    const modal = document.getElementById("productModal");
+    const modalBody = document.getElementById("modalBody");
+    
+    if (!modal || !modalBody) return;
+
     modalBody.innerHTML = `
         <img src="${product.image}" alt="${product.name}">
         <h2>${product.name}</h2>
@@ -80,14 +119,6 @@ function openModal(product) {
     `;
     modal.style.display = "block";
 }
-
-// Close modal
-closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-});
-window.addEventListener("click", (e) => {
-    if (e.target === modal) modal.style.display = "none";
-});
 
 // Add to cart
 function addToCart(index) {
@@ -108,10 +139,12 @@ function addToCartByProduct(productName) {
 
 function updateCartBadge() {
     const badge = document.querySelector(".cart-badge");
-    badge.innerText = cart.length;
+    if (badge) {
+        badge.innerText = cart.length;
+    }
 }
 
-// Show cart (you can expand this later)
+// Show cart
 function showCart() {
     if (cart.length === 0) {
         alert("Your cart is empty.");
