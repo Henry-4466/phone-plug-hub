@@ -1,6 +1,6 @@
 [
   {
-    "name": "Fast Charger",
+    "name": "ORAIMO NORMAL CHARGER",
     "price": "KSh 800",
     "category": "Chargers",
     "image": "images/fast charger.jpg",
@@ -131,6 +131,15 @@
     "category": "Wearables",
     "image": "images/oraimo watch 5 lite.jpg",
     "description": "Display 2.01 HD screen, supports blutooth wireless calling, includes heart rate and blood oxygen monitoring battery life up to 7 days waterproof IP68",
+    "inStock": true,
+    "popular": true
+  },
+  {
+      "name": "SUPER-TURBO CHARGE",
+    "price": "KSh 700",
+    "category": "Chargers",
+    "image": "images/.jpg",
+    "description": "Comes with a type C cable delivers up to 18W includes a 1000mm(1mt) cable",
     "inStock": true,
     "popular": true
   }
