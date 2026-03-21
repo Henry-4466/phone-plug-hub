@@ -62,4 +62,13 @@
     "inStock": true,
     "popular": true
   },
+  {
+    "name": "AMAYA POWER BANK",
+    "price": "kSH 1200",
+    "category": "Power",
+    "image": "images/.jpg",
+    "description": "AMAYA APB-F1229 10,000mAh 22.5W power bank with 4 built in cables",
+    "inStock": true,
+    "popular": true
+  },
 ]
