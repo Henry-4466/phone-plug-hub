@@ -169,5 +169,14 @@
     "description": "AMAYA zinc alloy braided cable 3 in one with a normal, type c and Iphone",
     "inStock": true,
     "popular": true
-  }  
+  },
+  {
+    "name": "M20 EARPODS",
+    "price": "KSh 850",
+    "category": "Audio",
+    "image": "images/M10 earpods.jpg",
+    "description": "HD digital display 8mm moving coil unit large capacity charging. charge time 2hours and 5hours play time",
+    "inStock": true,
+    "popular": true
+  }
 ]
