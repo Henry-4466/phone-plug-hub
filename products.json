@@ -155,11 +155,19 @@
   {
     "name": "Plune fast charger",
     "price": "KSh 900",
-    "category": "Chargers",
+    "category": "Chargers"
     "image": "images/Plune fast charger.jpg",
     "description": "fast charger 45W with a typr C cable and a c to c port and a usb port",
     "inStock": true,
     "popular": true
-  }
-    
+  },
+  {
+    "name": "AMAYA 3 IN 1 cable",
+    "price": "KSh 250",
+    "category": "Cables",
+    "image": "images/Amaya 3 in 1 Cable.jpg",
+    "description": "AMAYA zinc alloy braided cable 3 in one with a normal, type c and Iphone",
+    "inStock": true,
+    "popular": true
+  }  
 ]
