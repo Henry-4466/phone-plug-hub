@@ -155,7 +155,7 @@
   {
     "name": "Plune fast charger",
     "price": "KSh 900",
-    "category": "Chargers"
+    "category": "Chargers",
     "image": "images/Plune fast charger.jpg",
     "description": "fast charger 45W with a typr C cable and a c to c port and a usb port",
     "inStock": true,
