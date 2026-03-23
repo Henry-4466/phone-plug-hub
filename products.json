@@ -178,5 +178,14 @@
     "description": "HD digital display 8mm moving coil unit large capacity charging. charge time 2hours and 5hours play time",
     "inStock": true,
     "popular": true
+  },
+  {
+    "name": "ORAIMO BOOMPOP HEADPHONES",
+    "price": "KSh 3300",
+    "category": "Head phones",
+    "image": "images/ORAIMO Headphones.jpg",
+    "description": "Offers up to 65hours playtime Features Hybrid ANC to block ambient noice and dual-mic",
+    "inStock": true,
+    "popular": true
   }
 ]
