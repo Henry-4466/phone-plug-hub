@@ -9,7 +9,7 @@
     "popular": true
   },
   {
-    "name": "Type-C Cable",
+    "name": "ORAIMO Type-C Cable",
     "price": "KSh 300",
     "category": "Cables",
     "image": "images/Type C cable.jpg",
@@ -18,7 +18,7 @@
     "popular": true
   },
   {
-    "name": "Smart Watch",
+    "name": "HAVIT Smart Watch",
     "price": "KSh 4300",
     "category": "Wearables",
     "image": "images/smartwatch.jpg",
@@ -27,7 +27,7 @@
     "popular": true
   },
   {
-    "name": "Power Bank",
+    "name": "AMAYA Power Bank",
     "price": "KSh 1200",
     "category": "POWER BANK",
     "image": "images/Power Bank.jpg",
@@ -36,7 +36,7 @@
     "popular": true
   },
   {
-    "name": "Wireless Earbuds",
+    "name": "JBL Wireless Earbuds",
     "price": "KSh 1100",
     "category": "Audio",
     "image": "images/wireless earbuds.jpg",
@@ -45,7 +45,7 @@
     "popular": true
   },
   {
-    "name": "Electric Kettle",
+    "name": "minMAX Electric Kettle",
     "price": "KSh 1300",
     "category": "House Hold Appliances",
     "image": "images/Electric Kettle.jpg",
