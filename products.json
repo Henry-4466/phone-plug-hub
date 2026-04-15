@@ -1,65 +1,272 @@
 [
-{
-    "name": "Fast Charger",
+  {
+    "name": "ORAIMO NORMAL CHARGER",
     "price": "KSh 800",
     "category": "Chargers",
-    "image": "images/charger.jpg",
+    "image": "images/fast charger.jpg",
     "description": "Original fast charger with intelligent IC protection for safe and efficient charging.",
     "inStock": true,
     "popular": true
-},
-{
-    "name": "Type-C Cable",
+  },
+  {
+    "name": "ORAIMO Type-C Cable",
     "price": "KSh 300",
     "category": "Cables",
-    "image": "images/cable.jpg",
+    "image": "images/Type C cable.jpg",
     "description": "Durable Type-C cable supporting fast charging and high-speed data transfer.",
     "inStock": true,
     "popular": true
-},
-{
-    "name": "Smart Watch",
+  },
+  {
+    "name": "HAVIT Smart Watch",
     "price": "KSh 4300",
     "category": "Wearables",
     "image": "images/smartwatch.jpg",
     "description": "HAVIT M9068 Amoled wireless call smart watch with Extra watch straps.",
     "inStock": true,
     "popular": true
-},
-{
-    "name": "Power Bank",
+  },
+  {
+    "name": "ORAIMO Power Bank",
     "price": "KSh 1200",
-    "category": "Power",
-    "image": "images/powerbank.jpg",
+    "category": "POWER BANK",
+    "image": "images/Power Bank.jpg",
     "description": "10000mAh high-capacity power bank with dual USB output and fast charging support.",
     "inStock": true,
-    "popular": false
-},
-{
-    "name": "Wireless Earbuds",
+    "popular": true
+  },
+  {
+    "name": "JBL Wireless Earbuds",
     "price": "KSh 1100",
     "category": "Audio",
     "image": "images/wireless earbuds.jpg",
     "description": "JBL earpods Zero 5 hours play time with pure base.",
     "inStock": true,
     "popular": true
-},
-{
-    "name": "Electric Kettle",
+  },
+  {
+    "name": "minMAX Electric Kettle",
     "price": "KSh 1300",
     "category": "House Hold Appliances",
-    "image": "images/Electric kettle.jpg",
+    "image": "images/Electric Kettle.jpg",
     "description": "1.8L clear glass display electric kettle with auto-shutoff and boil-dry protection.",
-    "inStock": false,
-    "popular": false
-},
-{
+    "inStock": true,
+    "popular": true
+  },
+  {
     "name": "Dolly Head phones",
     "price": "KSh 1500",
     "category": "Head phones",
     "image": "images/Head phones.jpg",
     "description": "wireless blutooth 5.3 battery life 3-5 hours charger type C HI-FI quality sound",
-    "inStock": false,
-    "popular": false
-}
+    "inStock": true,
+    "popular": true
+  },
+  {
+    "name": "AMAYA POWER BANK",
+    "price": "KSh 1200",
+    "category": "POWER BANK",
+    "image": "images/Amaya powerbank.jpg",
+    "description": "AMAYA APB-F1229 10,000mAh 22.5W power bank with 4 built in cables",
+    "inStock": true,
+    "popular": true
+  },
+  {
+    "name": "AMAYA WATCH LITE",
+    "price": "KSh 2500",
+    "category": "Wearables",
+    "image": "images/Amaya watch Lite.jpg",
+    "description": "AMAYA watch Lite waterproof ip67 power lasts up to 14 days",
+    "inStock": true,
+    "popular": true
+  },
+  {
+     "name": "AMAYA powerbank APB-P228L",
+    "price": "KSh 1300",
+    "category": "POWER BANK",
+    "image": "images/Amaya power bank torch.jpg",
+    "description": "AMAYA Power bank with torch 20,000mAh",
+    "inStock": true,
+    "popular": true
+  },
+  {
+     "name": "Amazone Tv stick",
+    "price": "KSh 2600",
+    "category": "House Hold Appliances",
+    "image": "images/Amazone TV Stick.jpg",
+    "description": "2GB RAM 16GB Storage supports dual band WI-FI Runs on Android Version 7.1 with one free movie app",
+    "inStock": true,
+    "popular": true
+  },
+  {
+     "name": "ORAIMO Smart Blender",
+    "price": "KSh 4600",
+    "category": "House Hold Appliances",
+    "image": "images/ORAIMO smart Blender.jpg",
+    "description": "Smart blender with glass 1.5L glass 2-speed settings and a pulse function for versatile blending contral",
+    "inStock": true,
+    "popular": true
+  },
+  {
+       "name": "CAMEIDO CT04 Headphones",
+    "price": "KSh 1500",
+    "category": "Head phones",
+    "image": "images/Cameido Headphones.jpg",
+    "description": "Blutooth wireless connectivity with a verity of colors",
+    "inStock": true,
+    "popular": true
+  },
+  {
+      "name": "SOUNDCORE R5OI",
+    "price": "KSh 2900",
+    "category": "Audio",
+    "image": "images/Soundcore Earpods.jpg",
+    "description": "Offers up to 10 hours of playtime on a single charge utilizes Bluetooth 5.3 technology water resistance IPX5",
+    "inStock": true,
+    "popular": true
+  },
+  {
+      "name": "ORAIMO WATCH 5 LITE",
+    "price": "KSh 1900",
+    "category": "Wearables",
+    "image": "images/oraimo watch 5 lite.jpg",
+    "description": "Display 2.01 HD screen, supports blutooth wireless calling, includes heart rate and blood oxygen monitoring battery life up to 7 days waterproof IP68",
+    "inStock": true,
+    "popular": true
+  },
+  {
+      "name": "SUPER-TURBO CHARGE",
+    "price": "KSh 700",
+    "category": "Chargers",
+    "image": "images/super turbo charger.jpg",
+    "description": "Comes with a type C cable delivers up to 18W includes a 1000mm(1mt) cable",
+    "inStock": true,
+    "popular": true
+  },
+  {
+      "name": "ORAIMO C to C cable",
+    "price": "KSh 350",
+    "category": "Cables",
+    "image": "images/Oraimo C to C cable.jpg",
+    "description": "Oraimo C to C cable 100W 1.2M with a real time display",
+    "inStock": true,
+    "popular": true
+  },
+  {
+    "name": "Plune fast charger",
+    "price": "KSh 900",
+    "category": "Chargers",
+    "image": "images/Plune fast charger.jpg",
+    "description": "fast charger 45W with a typr C cable and a c to c port and a usb port",
+    "inStock": true,
+    "popular": true
+  },
+  {
+    "name": "AMAYA 3 IN 1 cable",
+    "price": "KSh 250",
+    "category": "Cables",
+    "image": "images/Amaya 3 in 1 Cable.jpg",
+    "description": "AMAYA zinc alloy braided cable 3 in one with a normal, type c and Iphone",
+    "inStock": true,
+    "popular": true
+  },
+  {
+    "name": "M20 EARPODS",
+    "price": "KSh 850",
+    "category": "Audio",
+    "image": "images/M10 earpods.jpg",
+    "description": "HD digital display 8mm moving coil unit large capacity charging. charge time 2hours and 5hours play time",
+    "inStock": true,
+    "popular": true
+  },
+  {
+    "name": "ORAIMO BOOMPOP HEADPHONES",
+    "price": "KSh 3300",
+    "category": "Head phones",
+    "image": "images/ORAIMO Headphones.jpg",
+    "description": "Offers up to 65hours playtime Features Hybrid ANC to block ambient noice and dual-mic",
+    "inStock": true,
+    "popular": true
+  },
+  {
+     "name": "MOXOM CHARGER",
+    "price": "KSh 900",
+    "category": "Chargers",
+    "image": "images/Moxom charger.jpg",
+    "description": "type c cable fast charger 18W",
+    "inStock": true,
+    "popular": true
+  } ,
+  { 
+    "name": "T9000",
+    "price": "KSh 1900",
+    "category": "Wearables",
+    "image": "images/T9000.jpg",
+    "description": "Multiple watcg faces, sync and safe contacts measures heart rate",
+    "inStock": true,
+    "popular": true
+  },
+  { 
+    "name": "JBL mini Blutooth speaker",
+    "price": "KSh 900",
+    "category": "Audio",
+    "image": "images/JBL speaker.jpg",
+    "description": "Quality sound compatible with laptops for gaming or watching movies provides 4D 0R 360 degree sound",
+    "inStock": true,
+    "popular": true
+  },
+  {
+    "name": "Oraimo smart Blender",
+    "price": "KSh 3000",
+    "category": "House Hold Appliances",
+    "image": "images/Oraimo mini Blender.jpg",
+    "description": "500ml battery 2000mAh Tritan plastic cup body includes a safety lock to prevent accidents",
+    "inStock": true,
+    "popular": true
+  },
+  {
+    "name": "q515 tk-H selfie stick",
+    "price": "KSh 2800",
+    "category": "others",
+    "image": "images/Tracking Selfie stick.jpg",
+    "description": "It has an AI Face tracking feature that locks on the users face, two powerfull lamps for lighting ",
+    "inStock": true,
+    "popular": true
+  },
+  {
+    "name": "RGB Ring Light",
+    "price": "KSh 1600",
+    "category": "others",
+    "image": "images/RGB Ring Light.jpg",
+    "description": "Features 26RBG Colourful lighting, includes universal phone holder, powered via USB interface 5v with power rating of approximatly 20W ",
+    "inStock": true,
+    "popular": true
+  },
+  {
+    "name": "Oraimo Hydra 6 Magnetic phone Holder",
+    "price": "KSh 1350",
+    "category": "others",
+    "image": "images/Oraimo phone holder.jpg",
+    "description": "foldable and has a magnet that can attach to your phone",
+    "inStock": true,
+    "popular": true
+  },
+  {
+    "name": "Mini Iron",
+    "price": "KSh 1300 ",
+    "category": "House Hold Appliances",
+    "image": "images/Mini Iron.jpg",
+    "description": "Portable design includes a small spray bottle for misting garments power intake 700w-1000w voltage 220v-240v",
+    "inStock": true,
+    "popular": true
+  },
+  {
+    "name": "Aldepo Neckband",
+    "price": "KSh 1100",
+    "category": "Audio",
+    "image": "images/Aldepo Neckband.jpg",
+    "description": "80hours of talk time, has deep bass drivers for quality powerful sound, Bluetooth 5.3 for a stable wireless connection with a range of approximately 10-20 meters ",
+    "inStock": true,
+    "popular": true
+  }
 ]
