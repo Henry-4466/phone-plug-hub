@@ -1,0 +1,65 @@
+[
+{
+    "name": "Fast Charger",
+    "price": "KSh 800",
+    "category": "Chargers",
+    "image": "images/charger.jpg",
+    "description": "Original fast charger with intelligent IC protection for safe and efficient charging.",
+    "inStock": true,
+    "popular": true
+},
+{
+    "name": "Type-C Cable",
+    "price": "KSh 300",
+    "category": "Cables",
+    "image": "images/cable.jpg",
+    "description": "Durable Type-C cable supporting fast charging and high-speed data transfer.",
+    "inStock": true,
+    "popular": true
+},
+{
+    "name": "Smart Watch",
+    "price": "KSh 4300",
+    "category": "Wearables",
+    "image": "images/smartwatch.jpg",
+    "description": "HAVIT M9068 Amoled wireless call smart watch with Extra watch straps.",
+    "inStock": true,
+    "popular": true
+},
+{
+    "name": "Power Bank",
+    "price": "KSh 1200",
+    "category": "Power",
+    "image": "images/powerbank.jpg",
+    "description": "10000mAh high-capacity power bank with dual USB output and fast charging support.",
+    "inStock": true,
+    "popular": false
+},
+{
+    "name": "Wireless Earbuds",
+    "price": "KSh 1100",
+    "category": "Audio",
+    "image": "images/wireless earbuds.jpg",
+    "description": "JBL earpods Zero 5 hours play time with pure base.",
+    "inStock": true,
+    "popular": true
+},
+{
+    "name": "Electric Kettle",
+    "price": "KSh 1300",
+    "category": "House Hold Appliances",
+    "image": "images/Electric kettle.jpg",
+    "description": "1.8L clear glass display electric kettle with auto-shutoff and boil-dry protection.",
+    "inStock": false,
+    "popular": false
+},
+{
+    "name": "Dolly Head phones",
+    "price": "KSh 1500",
+    "category": "Head phones",
+    "image": "images/Head phones.jpg",
+    "description": "wireless blutooth 5.3 battery life 3-5 hours charger type C HI-FI quality sound",
+    "inStock": false,
+    "popular": false
+}
+]
