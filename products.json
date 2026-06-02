@@ -117,15 +117,6 @@
     "popular": true
   },
   {
-      "name": "SOUNDCORE R5OI",
-    "price": "KSh 2900",
-    "category": "Audio",
-    "image": "images/Soundcore Earpods.jpg",
-    "description": "Offers up to 10 hours of playtime on a single charge utilizes Bluetooth 5.3 technology water resistance IPX5",
-    "inStock": true,
-    "popular": true
-  },
-  {
       "name": "ORAIMO WATCH 5 LITE",
     "price": "KSh 1900",
     "category": "Wearables",
