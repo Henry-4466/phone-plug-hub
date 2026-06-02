@@ -81,7 +81,7 @@
     "popular": true
   },
   {
-     "name": "AMAYA powerbank APB-P228L",
+    "name": "AMAYA powerbank APB-P228L",
     "price": "KSh 1300",
     "category": "POWER BANK",
     "image": "images/Amaya power bank torch.jpg",
@@ -90,7 +90,7 @@
     "popular": true
   },
   {
-     "name": "Amazone Tv stick",
+    "name": "Amazone Tv stick",
     "price": "KSh 3500",
     "category": "House Hold Appliances",
     "image": "images/Amazone TV Stick.jpg",
@@ -99,7 +99,7 @@
     "popular": true
   },
   {
-     "name": "ORAIMO Smart Blender",
+    "name": "ORAIMO Smart Blender",
     "price": "KSh 4600",
     "category": "House Hold Appliances",
     "image": "images/ORAIMO smart Blender.jpg",
@@ -108,7 +108,7 @@
     "popular": true
   },
   {
-       "name": "CAMEIDO CT04 Headphones",
+    "name": "CAMEIDO CT04 Headphones",
     "price": "KSh 1500",
     "category": "Head phones",
     "image": "images/Cameido Headphones.jpg",
@@ -117,7 +117,7 @@
     "popular": true
   },
   {
-      "name": "ORAIMO WATCH 5 LITE",
+    "name": "ORAIMO WATCH 5 LITE",
     "price": "KSh 1900",
     "category": "Wearables",
     "image": "images/oraimo watch 5 lite.jpg",
@@ -126,7 +126,7 @@
     "popular": true
   },
   {
-      "name": "SUPER-TURBO CHARGE",
+    "name": "SUPER-TURBO CHARGE",
     "price": "KSh 500",
     "category": "Chargers",
     "image": "images/super turbo charger.jpg",
@@ -135,7 +135,7 @@
     "popular": true
   },
   {
-      "name": "ORAIMO C to C cable",
+    "name": "ORAIMO C to C cable",
     "price": "KSh 350",
     "category": "Cables",
     "image": "images/Oraimo C to C cable.jpg",
@@ -180,15 +180,15 @@
     "popular": true
   },
   {
-     "name": "MOXOM CHARGER",
+    "name": "MOXOM CHARGER",
     "price": "KSh 500",
     "category": "Chargers",
     "image": "images/Moxom charger.jpg",
     "description": "type c cable fast charger 18W",
     "inStock": true,
     "popular": true
-  } ,
-  { 
+  },
+  {
     "name": "T9000",
     "price": "KSh 1900",
     "category": "Wearables",
@@ -197,7 +197,7 @@
     "inStock": true,
     "popular": true
   },
-  { 
+  {
     "name": "JBL mini Blutooth speaker",
     "price": "KSh 900",
     "category": "Audio",
@@ -235,7 +235,7 @@
   },
   {
     "name": "Mini Iron",
-    "price": "KSh 1300 ",
+    "price": "KSh 1300",
     "category": "House Hold Appliances",
     "image": "images/Mini Iron.jpg",
     "description": "Portable design includes a small spray bottle for misting garments power intake 700w-1000w voltage 220v-240v",
@@ -247,7 +247,88 @@
     "price": "KSh 1100",
     "category": "Audio",
     "image": "images/Aldepo Neckband.jpg",
-    "description": "80hours of talk time, has deep bass drivers for quality powerful sound, Bluetooth 5.3 for a stable wireless connection with a range of approximately 10-20 meters ",
+    "description": "80hours of talk time, has deep bass drivers for quality powerful sound, Bluetooth 5.3 for a stable wireless connection with a range of approximately 10-20 meters",
+    "inStock": true,
+    "popular": true
+  },
+  {
+    "name": "Ailyons Hair Clippers",
+    "price": "KSh 1450",
+    "category": "House Hold Appliances",
+    "image": "images/Ailyons Hair Clippers.jpg",
+    "description": "120 mins battery, no stuck hair, large battery, high quality steel blade, fast charging",
+    "inStock": true,
+    "popular": true
+  },
+  {
+    "name": "MiSTiSTEREO Amplifier HY-502",
+    "price": "KSh 1500",
+    "category": "Audio",
+    "image": "images/MiSTiSTEREO Amplifier.jpg",
+    "description": "2-channel output power amplifier, USB/SD/FM/DVD/CD/MP3, EQ control, Made in China",
+    "inStock": true,
+    "popular": true
+  },
+  {
+    "name": "Amaya Power Bank APB-F129",
+    "price": "KSh 1500",
+    "category": "POWER BANK",
+    "image": "images/Amaya APB-F129.jpg",
+    "description": "22.5W output, OniFast ultra fast charging, 10000h durable lithium polymer, anti-scratch texture",
+    "inStock": true,
+    "popular": true
+  },
+  {
+    "name": "Amaya Power Bank APB-F229",
+    "price": "KSh 1800",
+    "category": "POWER BANK",
+    "image": "images/Amaya APB-F229.jpg",
+    "description": "20000mAh, 22.5W total output, OniFossil, durable quality lithium polymer, anti-scratch texture",
+    "inStock": true,
+    "popular": true
+  },
+  {
+    "name": "HAVIT SK818BT Portable Speaker",
+    "price": "KSh 2400",
+    "category": "Audio",
+    "image": "images/HAVIT SK818BT.jpg",
+    "description": "Portable wireless karaoke speaker, RGB gradient multi-color, long battery life",
+    "inStock": true,
+    "popular": true
+  },
+  {
+    "name": "Amaya PowerBox 300 APB-30",
+    "price": "KSh 2500",
+    "category": "POWER BANK",
+    "image": "images/Amaya PowerBox 300.jpg",
+    "description": "30000mAh, 22.5W PD fast charger, 100% LED digital display, built-in charging cable",
+    "inStock": true,
+    "popular": true
+  },
+  {
+    "name": "Amaya PowerBox 400 APB-40",
+    "price": "KSh 2900",
+    "category": "POWER BANK",
+    "image": "images/Amaya PowerBox 400.jpg",
+    "description": "Built-in charging cable, 100% LED digital display, 22.5W PD fast charger",
+    "inStock": true,
+    "popular": true
+  },
+  {
+    "name": "Amaya PowerBox 500 APB-50",
+    "price": "KSh 3500",
+    "category": "POWER BANK",
+    "image": "images/Amaya PowerBox 500.jpg",
+    "description": "50000mAh, 22.5W, premium accessories",
+    "inStock": true,
+    "popular": true
+  },
+  {
+    "name": "HAVIT 30W Charger",
+    "price": "KSh 3800",
+    "category": "Chargers",
+    "image": "images/HAVIT 30W Charger.jpg",
+    "description": "30W output, Mobile Series, 2024 Commemorative Edition Gift",
     "inStock": true,
     "popular": true
   }
