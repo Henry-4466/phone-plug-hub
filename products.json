@@ -207,15 +207,6 @@
     "popular": true
   },
   {
-    "name": "Oraimo smart Blender",
-    "price": "KSh 3000",
-    "category": "House Hold Appliances",
-    "image": "images/Oraimo mini Blender.jpg",
-    "description": "500ml battery 2000mAh Tritan plastic cup body includes a safety lock to prevent accidents",
-    "inStock": true,
-    "popular": true
-  },
-  {
     "name": "q515 tk-H selfie stick",
     "price": "KSh 2800",
     "category": "others",
