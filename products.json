@@ -91,7 +91,7 @@
   },
   {
      "name": "Amazone Tv stick",
-    "price": "KSh 2600",
+    "price": "KSh 3500",
     "category": "House Hold Appliances",
     "image": "images/Amazone TV Stick.jpg",
     "description": "2GB RAM 16GB Storage supports dual band WI-FI Runs on Android Version 7.1 with one free movie app",
@@ -127,7 +127,7 @@
   },
   {
       "name": "SUPER-TURBO CHARGE",
-    "price": "KSh 700",
+    "price": "KSh 500",
     "category": "Chargers",
     "image": "images/super turbo charger.jpg",
     "description": "Comes with a type C cable delivers up to 18W includes a 1000mm(1mt) cable",
@@ -145,7 +145,7 @@
   },
   {
     "name": "Plune fast charger",
-    "price": "KSh 900",
+    "price": "KSh 500",
     "category": "Chargers",
     "image": "images/Plune fast charger.jpg",
     "description": "fast charger 45W with a typr C cable and a c to c port and a usb port",
@@ -181,7 +181,7 @@
   },
   {
      "name": "MOXOM CHARGER",
-    "price": "KSh 900",
+    "price": "KSh 500",
     "category": "Chargers",
     "image": "images/Moxom charger.jpg",
     "description": "type c cable fast charger 18W",
