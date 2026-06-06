@@ -1009,12 +1009,15 @@
     </a>
 
     <script>
+            <script>
         let products = [];
         let cart = [];
         let currentOrder = null;
-         let currentCheckoutRequestId = null;
-        let backendUrl = 'https://hurried-unruly-fiscally.ngrok-free.dev';
+        let currentCheckoutRequestId = null;        // ← NEW
+        let backendUrl = 'https://hurried-unruly-fiscally.ngrok-free.dev';  // ← NEW
 
+        // Debug display function
+        function showDebug(message, isError = false) {
         // Debug display function
         function showDebug(message, isError = false) {
             const container = document.getElementById('products');
