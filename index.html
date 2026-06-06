@@ -1420,38 +1420,44 @@
         }
 
         function placeOrder() {
-            const name = document.getElementById('customerName').value.trim();
-            const phone = document.getElementById('customerPhone').value.trim();
-            const email = document.getElementById('customerEmail')?.value.trim() || '';
-            const address = document.getElementById('customerAddress').value.trim();
-
-            if (!name || !phone || !address) {
-                showNotification('Please fill all required fields!', 'error');
-                return;
-            }
-
-            // Generate order
-            const orderNumber = 'PPH' + Date.now().toString().slice(-8);
-            const total = calculateTotal();
-            
-            currentOrder = {
-                orderNumber,
-                customer: { name, phone, email, address },
-                items: [...cart],
-                total,
-                date: new Date().toLocaleString()
-            };
-
-            closeModal('checkoutModal');
-            showPaymentProcessing();
-
-            // Simulate processing
-            setTimeout(() => {
-                showPaymentSuccess();
-                sendAdminNotification(currentOrder);
-                sendCustomerConfirmation(currentOrder);
-            }, 3000);
-        }
+    const name = document.getElementById('customerName').value.trim();
+    const phone = document.getElementById('customerPhone').value.trim();
+    const email = document.getElementById('customerEmail')?.value.trim() || '';
+    const address = document.getElementById('customerAddress').value.trim();
+    
+    // Check which payment method is selected
+    const selectedPayment = document.querySelector('.payment-method.selected span')?.innerText || 'M-Pesa';
+    
+    if (!name || !phone || !address) {
+        showNotification('Please fill all required fields!', 'error');
+        return;
+    }
+    
+    // Generate order number
+    const orderNumber = 'PPH' + Date.now().toString().slice(-8);
+    const total = calculateTotal();
+    
+    currentOrder = {
+        orderNumber,
+        customer: { name, phone, email, address },
+        items: [...cart],
+        total,
+        date: new Date().toLocaleString(),
+        paymentMethod: selectedPayment
+    };
+    
+    closeModal('checkoutModal');
+    
+    if (selectedPayment === 'M-Pesa') {
+        // Process M-Pesa payment
+        processMpesaPayment(currentOrder);
+    } else {
+        // Cash on Delivery or Bank Transfer - send WhatsApp
+        showPaymentSuccess();
+        sendAdminNotification(currentOrder);
+        sendCustomerConfirmation(currentOrder);
+    }
+}
 
         function showPaymentProcessing() {
             const paymentBody = document.getElementById('paymentBody');
