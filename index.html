@@ -963,6 +963,7 @@
                 </div>
                 <p class="tagline">Tested Quality & Approved Products</p>
             </div>
+        </div>
     </header>
 
     <div class="cart-icon" onclick="showCart()">
@@ -1012,32 +1013,31 @@
         let products = [];
         let cart = [];
         let currentOrder = null;
-        let currentCheckoutRequestId = null;        // ← NEW
-        let backendUrl = 'https://hurried-unruly-fiscally.ngrok-free.dev';  // ← NEW
+        let currentCheckoutRequestId = null;
+        let backendUrl = 'https://hurried-unruly-fiscally.ngrok-free.dev';
 
-        // Debug display function
-        function showDebug(message, isError = false) {
         // Debug display function
         function showDebug(message, isError = false) {
             const container = document.getElementById('products');
-            container.innerHTML = `
-                <div class="no-results" style="border: 2px solid ${isError ? '#e53e3e' : '#ff6b00'}; padding: 30px; border-radius: 15px;">
-                    <h3>${isError ? '❌ Error' : 'ℹ️ Info'}</h3>
-                    <p style="font-family: monospace; font-size: 14px; margin-top: 15px; word-break: break-all;">${message}</p>
-                    ${isError ? '<p style="margin-top: 20px; color: #888;">Check that products.json is in the same folder as index.html and committed to GitHub</p>' : ''}
-                </div>
-            `;
+            if(container) {
+                container.innerHTML = `
+                    <div class="no-results" style="border: 2px solid ${isError ? '#e53e3e' : '#ff6b00'}; padding: 30px; border-radius: 15px;">
+                        <h3>${isError ? '❌ Error' : 'ℹ️ Info'}</h3>
+                        <p style="font-family: monospace; font-size: 14px; margin-top: 15px; word-break: break-all;">${message}</p>
+                        ${isError ? '<p style="margin-top: 20px; color: #888;">Check that products.json is in the same folder as index.html and committed to GitHub</p>' : ''}
+                    </div>
+                `;
+            }
         }
 
-        // Load products from JSON with GitHub Pages compatibility
+        // Load products from JSON
         function loadProducts() {
             showDebug('Loading products...');
 
-            // Try multiple paths for GitHub Pages compatibility
             const possiblePaths = [
-                './products.json',  // Same folder
-                'products.json',    // Root relative
-                window.location.pathname.replace(/\/[^\/]*$/, '') + '/products.json'  // Current directory
+                './products.json',
+                'products.json',
+                window.location.pathname.replace(/\/[^\/]*$/, '') + '/products.json'
             ];
 
             let pathIndex = 0;
@@ -1059,7 +1059,6 @@
                         return response.text();
                     })
                     .then(text => {
-                        // Check if we got HTML instead of JSON
                         if (text.trim().startsWith('<')) {
                             throw new Error('Received HTML instead of JSON (404 page?)');
                         }
@@ -1074,7 +1073,6 @@
                                 throw new Error('JSON array is empty');
                             }
 
-                            // Success! Render the products
                             renderCategories();
                             renderProducts(products);
 
@@ -1085,7 +1083,7 @@
                     .catch(error => {
                         console.error(`Failed to load from ${path}:`, error);
                         if (pathIndex < possiblePaths.length) {
-                            tryNextPath(); // Try next path
+                            tryNextPath();
                         } else {
                             showDebug(`All paths failed. Last error: ${error.message}<br><br>Paths tried:<br>${possiblePaths.join('<br>')}`, true);
                         }
@@ -1095,29 +1093,30 @@
             tryNextPath();
         }
 
-        // Call load on startup
         loadProducts();
 
-        // Render Categories
         function renderCategories() {
             if (!products.length) return;
             
             const categories = ['All', ...new Set(products.map(p => p.category))];
             const container = document.getElementById('categories');
             
-            container.innerHTML = categories.map((cat, index) => {
-                const count = cat === 'All' ? products.length : products.filter(p => p.category === cat).length;
-                return `
-                    <button class="category-btn ${index === 0 ? 'active' : ''}" onclick="filterProducts('${cat}')">
-                        ${cat} <span class="count">(${count})</span>
-                    </button>
-                `;
-            }).join('');
+            if(container) {
+                container.innerHTML = categories.map((cat, index) => {
+                    const count = cat === 'All' ? products.length : products.filter(p => p.category === cat).length;
+                    return `
+                        <button class="category-btn ${index === 0 ? 'active' : ''}" onclick="filterProducts('${cat}')">
+                            ${cat} <span class="count">(${count})</span>
+                        </button>
+                    `;
+                }).join('');
+            }
         }
 
-        // Render Products
         function renderProducts(productsToRender) {
             const container = document.getElementById('products');
+            
+            if (!container) return;
             
             if (!productsToRender || productsToRender.length === 0) {
                 container.innerHTML = `
@@ -1169,20 +1168,19 @@
             `).join('');
         }
 
-        // Filter Products
         function filterProducts(category) {
             document.querySelectorAll('.category-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.textContent.includes(category)) btn.classList.add('active');
             });
             
-            document.getElementById('searchInput').value = '';
+            const searchInput = document.getElementById('searchInput');
+            if(searchInput) searchInput.value = '';
             
             const filtered = category === 'All' ? products : products.filter(p => p.category === category);
             renderProducts(filtered);
         }
 
-        // Search
         function handleSearch() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             
@@ -1190,7 +1188,8 @@
             
             if (query === '') {
                 renderProducts(products);
-                document.querySelector('.category-btn')?.classList.add('active');
+                const firstBtn = document.querySelector('.category-btn');
+                if(firstBtn) firstBtn.classList.add('active');
                 return;
             }
             
@@ -1202,7 +1201,6 @@
             renderProducts(filtered);
         }
 
-        // Cart Functions
         function addToCart(productName) {
             const product = products.find(p => p.name === productName);
             
@@ -1228,17 +1226,21 @@
             const count = cart.reduce((sum, item) => sum + item.quantity, 0);
             const badge = document.querySelector('.cart-badge');
             
-            badge.textContent = count;
-            badge.style.display = count > 0 ? 'flex' : 'none';
-            
-            if (count > 0) {
-                badge.style.transform = 'scale(1.3)';
-                setTimeout(() => badge.style.transform = 'scale(1)', 200);
+            if(badge) {
+                badge.textContent = count;
+                badge.style.display = count > 0 ? 'flex' : 'none';
+                
+                if (count > 0) {
+                    badge.style.transform = 'scale(1.3)';
+                    setTimeout(() => { if(badge) badge.style.transform = 'scale(1)'; }, 200);
+                }
             }
         }
 
         function showCart() {
             const modalBody = document.getElementById('modalBody');
+            
+            if (!modalBody) return;
             
             if (cart.length === 0) {
                 modalBody.innerHTML = `
@@ -1320,7 +1322,6 @@
             }, 0);
         }
 
-        // Checkout System
         function proceedToCheckout() {
             closeModal('productModal');
             showCheckout();
@@ -1328,6 +1329,8 @@
 
         function showCheckout() {
             const checkoutBody = document.getElementById('checkoutBody');
+            if (!checkoutBody) return;
+            
             const total = calculateTotal();
             
             const checkoutItems = cart.map(item => `
@@ -1419,54 +1422,136 @@
         }
 
         function placeOrder() {
-    const name = document.getElementById('customerName').value.trim();
-    const phone = document.getElementById('customerPhone').value.trim();
-    const email = document.getElementById('customerEmail')?.value.trim() || '';
-    const address = document.getElementById('customerAddress').value.trim();
-    
-    // Check which payment method is selected
-    const selectedPayment = document.querySelector('.payment-method.selected span')?.innerText || 'M-Pesa';
-    
-    if (!name || !phone || !address) {
-        showNotification('Please fill all required fields!', 'error');
-        return;
-    }
-    
-    // Generate order number
-    const orderNumber = 'PPH' + Date.now().toString().slice(-8);
-    const total = calculateTotal();
-    
-    currentOrder = {
-        orderNumber,
-        customer: { name, phone, email, address },
-        items: [...cart],
-        total,
-        date: new Date().toLocaleString(),
-        paymentMethod: selectedPayment
-    };
-    
-    closeModal('checkoutModal');
-    
-    if (selectedPayment === 'M-Pesa') {
-        // Process M-Pesa payment
-        processMpesaPayment(currentOrder);
-    } else {
-        // Cash on Delivery or Bank Transfer - send WhatsApp
-        showPaymentSuccess();
-        sendAdminNotification(currentOrder);
-        sendCustomerConfirmation(currentOrder);
-    }
-}
+            const name = document.getElementById('customerName').value.trim();
+            const phone = document.getElementById('customerPhone').value.trim();
+            const email = document.getElementById('customerEmail')?.value.trim() || '';
+            const address = document.getElementById('customerAddress').value.trim();
+            
+            const selectedPaymentSpan = document.querySelector('.payment-method.selected span');
+            const selectedPayment = selectedPaymentSpan ? selectedPaymentSpan.innerText : 'M-Pesa';
+            
+            if (!name || !phone || !address) {
+                showNotification('Please fill all required fields!', 'error');
+                return;
+            }
+            
+            const orderNumber = 'PPH' + Date.now().toString().slice(-8);
+            const total = calculateTotal();
+            
+            currentOrder = {
+                orderNumber,
+                customer: { name, phone, email, address },
+                items: [...cart],
+                total,
+                date: new Date().toLocaleString(),
+                paymentMethod: selectedPayment
+            };
+            
+            closeModal('checkoutModal');
+            
+            if (selectedPayment === 'M-Pesa') {
+                processMpesaPayment(currentOrder);
+            } else {
+                showPaymentSuccess();
+                sendAdminNotification(currentOrder);
+                sendCustomerConfirmation(currentOrder);
+            }
+        }
+
+        async function processMpesaPayment(order) {
+            showPaymentProcessing();
+            
+            try {
+                const response = await fetch(`${backendUrl}/api/pay`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'ngrok-skip-browser-warning': 'true'
+                    },
+                    body: JSON.stringify({
+                        phone: order.customer.phone,
+                        amount: order.total,
+                        orderNumber: order.orderNumber,
+                        customerName: order.customer.name
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    currentCheckoutRequestId = data.checkoutRequestId;
+                    showNotification('STK Push sent! Check your phone for M-Pesa prompt.', 'success');
+                    pollPaymentStatus(data.checkoutRequestId, order);
+                } else {
+                    throw new Error(data.message || 'Payment initiation failed');
+                }
+                
+            } catch (error) {
+                console.error('Payment error:', error);
+                const paymentBody = document.getElementById('paymentBody');
+                if (paymentBody) {
+                    paymentBody.innerHTML = `
+                        <div class="payment-loading">
+                            <div style="font-size: 50px; margin-bottom: 20px;">❌</div>
+                            <h2>Payment Failed</h2>
+                            <p style="color: #888; margin: 15px 0;">${error.message || 'Could not initiate payment. Please try again.'}</p>
+                            <button class="continue-btn" onclick="closeModal('paymentModal'); showCheckout();">
+                                Try Again
+                            </button>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        async function pollPaymentStatus(checkoutRequestId, order) {
+            let attempts = 0;
+            const maxAttempts = 30;
+            
+            const interval = setInterval(async () => {
+                attempts++;
+                
+                try {
+                    const response = await fetch(`${backendUrl}/api/status`, {
+                        method: 'POST',
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            'ngrok-skip-browser-warning': 'true'
+                        },
+                        body: JSON.stringify({ checkoutRequestId })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success && data.transaction?.status === 'completed') {
+                        clearInterval(interval);
+                        cart = [];
+                        updateCartCount();
+                        showPaymentSuccess();
+                        sendAdminNotification(order);
+                        sendCustomerConfirmation(order);
+                        showNotification('Payment successful! Order confirmed.', 'success');
+                    } else if (attempts >= maxAttempts) {
+                        clearInterval(interval);
+                        showNotification('Payment timeout. Please check your M-Pesa messages.', 'error');
+                    }
+                } catch (error) {
+                    console.error('Status check error:', error);
+                }
+            }, 1000);
+        }
 
         function showPaymentProcessing() {
             const paymentBody = document.getElementById('paymentBody');
-            paymentBody.innerHTML = `
-                <div class="payment-loading">
-                    <div class="spinner"></div>
-                    <h2>Processing Your Order...</h2>
-                    <p style="color: #888; margin-top: 15px;">Please wait while we confirm your order</p>
-                </div>
-            `;
+            if (paymentBody) {
+                paymentBody.innerHTML = `
+                    <div class="payment-loading">
+                        <div class="spinner"></div>
+                        <h2>Processing Your Order...</h2>
+                        <p style="color: #888; margin-top: 15px;">Please wait while we confirm your order</p>
+                    </div>
+                `;
+            }
             openModal('paymentModal');
         }
 
@@ -1474,35 +1559,35 @@
             const paymentBody = document.getElementById('paymentBody');
             const order = currentOrder;
 
-            paymentBody.innerHTML = `
-                <div class="payment-success">
-                    <div class="success-icon">✓</div>
-                    <h2>Order Placed Successfully!</h2>
-                    <p style="color: #888; margin: 15px 0;">Thank you, ${order.customer.name}!</p>
-                    
-                    <div class="order-number-box">
-                        <p>Your Order Number</p>
-                        <div class="order-number">${order.orderNumber}</div>
-                        <p style="font-size: 12px; margin-top: 10px;">Save this for your records</p>
+            if (paymentBody && order) {
+                paymentBody.innerHTML = `
+                    <div class="payment-success">
+                        <div class="success-icon">✓</div>
+                        <h2>Order Placed Successfully!</h2>
+                        <p style="color: #888; margin: 15px 0;">Thank you, ${order.customer.name}!</p>
+                        
+                        <div class="order-number-box">
+                            <p>Your Order Number</p>
+                            <div class="order-number">${order.orderNumber}</div>
+                            <p style="font-size: 12px; margin-top: 10px;">Save this for your records</p>
+                        </div>
+
+                        <div class="next-steps">
+                            <h4>📋 What Happens Next:</h4>
+                            <ol>
+                                <li>Check your WhatsApp for order confirmation</li>
+                                <li>Our team will verify stock availability</li>
+                                <li>Delivery arranged within 24 hours after payment</li>
+                            </ol>
+                        </div>
+
+                        <button class="continue-btn" onclick="finishOrder()">
+                            Continue Shopping
+                        </button>
                     </div>
+                `;
+            }
 
-                    <div class="next-steps">
-                        <h4>📋 What Happens Next:</h4>
-                        <ol>
-                            <li>Check your WhatsApp for order confirmation</li>
-                            <li>Our team will verify stock availability</li>
-                            <li>Receive M-Pesa payment request via STK push</li>
-                            <li>Delivery arranged within 24 hours after payment</li>
-                        </ol>
-                    </div>
-
-                    <button class="continue-btn" onclick="finishOrder()">
-                        Continue Shopping
-                    </button>
-                </div>
-            `;
-
-            // Clear cart
             cart = [];
             updateCartCount();
         }
@@ -1512,7 +1597,6 @@
             currentOrder = null;
         }
 
-        // Notification System
         function sendAdminNotification(order) {
             const itemsList = order.items.map(item => 
                 `• ${item.name} (${item.price}) × ${item.quantity}`
@@ -1530,10 +1614,7 @@
                 `*TOTAL: KSh ${order.total.toLocaleString()}*\n\n` +
                 `Reply to confirm availability and send payment request.`;
 
-            // Open WhatsApp to admin
             window.open(`https://wa.me/254794277455?text=${encodeURIComponent(message)}`, '_blank');
-            
-            // Show on-screen notification
             showAdminNotification(order);
         }
 
@@ -1550,7 +1631,6 @@
                 `We will verify availability and send you a payment request shortly.\n\n` +
                 `Need help? Reply to this message.`;
 
-            // Format phone number (remove leading 0, add 254)
             const customerPhone = '254' + order.customer.phone.replace(/^0/, '');
             
             setTimeout(() => {
@@ -1577,39 +1657,39 @@
             setTimeout(() => notif.remove(), 6000);
         }
 
-        // Product Modal
         function openProductModal(productName) {
             const product = products.find(p => p.name === productName);
             if (!product) return;
 
             const modalBody = document.getElementById('modalBody');
-            modalBody.innerHTML = `
-                <span class="close" onclick="closeModal('productModal')" style="position: absolute; top: 20px; right: 25px; font-size: 32px; color: #666; cursor: pointer;">&times;</span>
-                
-                <img src="${product.image}" alt="${product.name}" 
-                     onerror="this.src='https://via.placeholder.com/500x300?text=${encodeURIComponent(product.name)}'" 
-                     style="width: 100%; border-radius: 15px; margin-bottom: 25px;">
-                
-                <h2 style="font-size: 28px; margin-bottom: 15px; color: #fff;">${product.name}</h2>
-                <p class="price" style="font-size: 32px; margin-bottom: 20px;">${product.price}</p>
-                <p style="color: #aaa; line-height: 1.6; margin-bottom: 25px;">${product.description || ''}</p>
-                
-                <div style="display: flex; gap: 15px;">
-                    <button onclick="addToCart('${product.name.replace(/'/g, "\\'")}'); closeModal('productModal');" 
-                            style="flex: 1; padding: 16px; background: linear-gradient(135deg, #ff6b00 0%, #ff8533 100%); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer;">
-                        🛒 Add to Cart
-                    </button>
-                    <button onclick="quickOrder('${product.name.replace(/'/g, "\\'")}', '${product.price}')" 
-                            style="flex: 1; padding: 16px; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer;">
-                        📱 Quick Order
-                    </button>
-                </div>
-            `;
+            if (modalBody) {
+                modalBody.innerHTML = `
+                    <span class="close" onclick="closeModal('productModal')" style="position: absolute; top: 20px; right: 25px; font-size: 32px; color: #666; cursor: pointer;">&times;</span>
+                    
+                    <img src="${product.image}" alt="${product.name}" 
+                         onerror="this.src='https://via.placeholder.com/500x300?text=${encodeURIComponent(product.name)}'" 
+                         style="width: 100%; border-radius: 15px; margin-bottom: 25px;">
+                    
+                    <h2 style="font-size: 28px; margin-bottom: 15px; color: #fff;">${product.name}</h2>
+                    <p class="price" style="font-size: 32px; margin-bottom: 20px;">${product.price}</p>
+                    <p style="color: #aaa; line-height: 1.6; margin-bottom: 25px;">${product.description || ''}</p>
+                    
+                    <div style="display: flex; gap: 15px;">
+                        <button onclick="addToCart('${product.name.replace(/'/g, "\\'")}'); closeModal('productModal');" 
+                                style="flex: 1; padding: 16px; background: linear-gradient(135deg, #ff6b00 0%, #ff8533 100%); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer;">
+                            🛒 Add to Cart
+                        </button>
+                        <button onclick="quickOrder('${product.name.replace(/'/g, "\\'")}', '${product.price}')" 
+                                style="flex: 1; padding: 16px; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer;">
+                            📱 Quick Order
+                        </button>
+                    </div>
+                `;
+            }
             
             openModal('productModal');
         }
 
-        // Quick Order
         function quickOrder(name, price) {
             const message = `Hello Phone Plug Hub! I want to order:\n\n` +
                 `*Product:* ${name}\n` +
@@ -1619,18 +1699,22 @@
             window.open(`https://wa.me/254794277455?text=${encodeURIComponent(message)}`, '_blank');
         }
 
-        // Modal Utilities
         function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'block';
-            document.body.style.overflow = 'hidden';
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
         }
 
         function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-            document.body.style.overflow = 'auto';
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
         }
 
-        // Notification
         function showNotification(message, type = 'success') {
             const existing = document.querySelector('.notification');
             if (existing) existing.remove();
@@ -1649,9 +1733,8 @@
             }, 3000);
         }
 
-        // Close modal when clicking outside
         window.onclick = (e) => {
-            if (e.target.classList.contains('modal')) {
+            if (e.target.classList && e.target.classList.contains('modal')) {
                 e.target.style.display = 'none';
                 document.body.style.overflow = 'auto';
             }
